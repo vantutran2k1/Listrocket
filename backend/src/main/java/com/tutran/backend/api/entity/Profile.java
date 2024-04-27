@@ -42,8 +42,8 @@ public class Profile extends AuditEntity {
     @DateTimeFormat(pattern = "yyyy/mm/dd")
     private Date dateOfBirth;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", nullable = false)
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
     private User user;
 
     @OneToMany(mappedBy = "profile", orphanRemoval = true)

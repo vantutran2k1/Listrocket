@@ -4,8 +4,6 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
-import java.util.Set;
-
 @Getter
 @Setter
 @SuperBuilder(toBuilder = true)
@@ -31,9 +29,9 @@ public class User extends AuditEntity {
     @Column(name = "password_hash", length = 60, nullable = false)
     private String passwordHash;
 
-    @OneToMany(mappedBy = "user")
+    @OneToOne(mappedBy = "user")
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    private Set<Profile> profiles;
+    private Profile profile;
 
 }
