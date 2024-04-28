@@ -7,7 +7,7 @@ import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -37,7 +37,7 @@ public class Profile extends AuditEntity {
 
     @Column(name = "date_of_birth")
     @DateTimeFormat(pattern = "yyyy/mm/dd")
-    private Date dateOfBirth;
+    private LocalDate dateOfBirth;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)

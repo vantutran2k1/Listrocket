@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Data
 public class ProfileCreateRequest {
@@ -20,6 +20,6 @@ public class ProfileCreateRequest {
 
     @JsonProperty(value = "date_of_birth")
     @DateTimeFormat(pattern = "yyyy/mm/dd")
-    private Date dateOfBirth;
+    private LocalDate dateOfBirth;
 
 }

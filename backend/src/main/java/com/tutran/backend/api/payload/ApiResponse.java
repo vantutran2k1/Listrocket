@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.lang.NonNull;
 
 @AllArgsConstructor
@@ -20,7 +21,7 @@ public class ApiResponse<T> {
     @JsonProperty(value = "meta")
     private Object meta;
 
-    @JsonProperty(value = "status_code")
-    private String statusCode;
+    @JsonProperty(value = "status")
+    private HttpStatus status;
 
 }

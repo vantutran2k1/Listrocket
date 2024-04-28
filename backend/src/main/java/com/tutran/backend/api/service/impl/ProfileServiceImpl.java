@@ -26,10 +26,10 @@ public class ProfileServiceImpl implements ProfileService {
     @Transactional
     public ProfileDefaultResponse createProfile(long userId, ProfileCreateRequest request) {
         if (!userService.existsById(userId)) {
-            throw new EntityNotFoundException("User with id " + userId + " not found");
+            throw new EntityNotFoundException("User with id '" + userId + "' not found");
         }
         if (profileRepository.existsByUserId(userId)) {
-            throw new EntityExistsException("Profile for user with id " + userId + " already exists");
+            throw new EntityExistsException("Profile for user with id '" + userId + "' already exists");
         }
 
         var profile = profileMapper.profileCreateRequestToProfile(request);

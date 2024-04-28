@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
+import java.time.LocalDate;
+
 @Data
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class ProfileDefaultResponse {
@@ -15,7 +17,7 @@ public class ProfileDefaultResponse {
     private String lastName;
 
     @JsonProperty(value = "date_of_birth")
-    private String dateOfBirth;
+    private LocalDate dateOfBirth;
 
     @JsonProperty(value = "user_id")
     private long userId;

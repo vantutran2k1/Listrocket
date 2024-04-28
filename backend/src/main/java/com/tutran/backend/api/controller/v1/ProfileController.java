@@ -4,6 +4,7 @@ import com.tutran.backend.api.payload.ApiResponse;
 import com.tutran.backend.api.payload.profile.ProfileCreateRequest;
 import com.tutran.backend.api.payload.profile.ProfileDefaultResponse;
 import com.tutran.backend.api.service.ProfileService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +22,7 @@ public class ProfileController extends AbstractV1Controller {
     @PostMapping(path = "/profiles")
     public ResponseEntity<ApiResponse<ProfileDefaultResponse>> createProfile(
             @RequestParam(name = "user_id") long userId,
-            @RequestBody ProfileCreateRequest request
+            @RequestBody @Valid ProfileCreateRequest request
     ) {
         ApiResponse<ProfileDefaultResponse> response = new ApiResponse<>(profileService.createProfile(userId, request));
         return new ResponseEntity<>(response, HttpStatus.CREATED);
