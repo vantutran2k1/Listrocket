@@ -29,13 +29,10 @@ public class Profile extends AuditEntity {
     @Column(name = "id")
     private long id;
 
-    @Column(name = "profile_name", nullable = false)
-    private String profileName;
-
-    @Column(name = "first_name")
+    @Column(name = "first_name", nullable = false)
     private String firstName;
 
-    @Column(name = "last_name")
+    @Column(name = "last_name", nullable = false)
     private String lastName;
 
     @Column(name = "date_of_birth")
@@ -50,7 +47,7 @@ public class Profile extends AuditEntity {
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     @Builder.Default
-    private Set<Task> task = new HashSet<>();
+    private Set<Task> tasks = new HashSet<>();
 
     @OneToMany(mappedBy = "profile", orphanRemoval = true)
     @ToString.Exclude

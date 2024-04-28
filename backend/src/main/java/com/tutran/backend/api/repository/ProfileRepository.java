@@ -4,4 +4,7 @@ import com.tutran.backend.api.entity.Profile;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ProfileRepository extends JpaRepository<Profile, Long> {
+
+    boolean existsByUserId(long id);
+
 }

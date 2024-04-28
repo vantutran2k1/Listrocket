@@ -10,9 +10,8 @@ CREATE TABLE IF NOT EXISTS users (
 
 CREATE TABLE IF NOT EXISTS profiles (
     id SERIAL PRIMARY KEY,
-    profile_name VARCHAR(255) NOT NULL,
-    first_name VARCHAR(255),
-    last_name VARCHAR(255),
+    first_name VARCHAR(255) NOT NULL,
+    last_name VARCHAR(255) NOT NULL,
     date_of_birth DATE,
     user_id INT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
