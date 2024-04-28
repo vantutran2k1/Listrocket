@@ -1,4 +1,4 @@
-package com.tutran.backend.api.dto;
+package com.tutran.backend.api.payload;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -12,7 +12,7 @@ public class ApiError {
 
     @JsonProperty(value = "messages")
     private Object messages;
-    
+
     @JsonProperty(value = "status_code")
     private String statusCode;
 
