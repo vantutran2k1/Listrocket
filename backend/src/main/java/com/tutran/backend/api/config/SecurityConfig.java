@@ -22,10 +22,10 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf
                         .csrfTokenRequestHandler(requestHandler)
-                        .ignoringRequestMatchers("/api/v1/users", "/api/v1/profiles", "/api/v1/user-authorities")
+                        .ignoringRequestMatchers("/api/v1/users", "/api/v1/profiles", "/api/v1/user-authorities/**")
                         .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
                 .authorizeHttpRequests(request -> request
-                        .requestMatchers(HttpMethod.POST, "/api/v1/users", "/api/v1/profiles", "/api/v1/user-authorities").permitAll())
+                        .requestMatchers(HttpMethod.POST, "/api/v1/users", "/api/v1/profiles", "/api/v1/user-authorities/**").permitAll())
                 .formLogin(Customizer.withDefaults())
                 .httpBasic(Customizer.withDefaults());
 

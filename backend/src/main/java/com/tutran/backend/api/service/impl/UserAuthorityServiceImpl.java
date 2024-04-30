@@ -1,5 +1,6 @@
 package com.tutran.backend.api.service.impl;
 
+import com.tutran.backend.api.entity.UserAuthority;
 import com.tutran.backend.api.mapper.UserAuthorityMapper;
 import com.tutran.backend.api.payload.userauthority.UserAuthorityCreateRequest;
 import com.tutran.backend.api.payload.userauthority.UserAuthorityDefaultResponse;
@@ -27,6 +28,19 @@ public class UserAuthorityServiceImpl implements UserAuthorityService {
     @Override
     @Transactional
     public UserAuthorityDefaultResponse createUserAuthority(long userId, UserAuthorityCreateRequest request) {
+        return createUserAuthorityInternal(userId, request);
+    }
+
+    @Override
+    @Transactional
+    public UserAuthorityDefaultResponse createDefaultUserAuthority(long userId) {
+        var request = new UserAuthorityCreateRequest();
+        request.setName(UserAuthority.AuthorityType.USER.name());
+
+        return createUserAuthorityInternal(userId, request);
+    }
+
+    private UserAuthorityDefaultResponse createUserAuthorityInternal(long userId, UserAuthorityCreateRequest request) {
         if (!userService.existsById(userId)) {
             throw new EntityNotFoundException("User with id '" + userId + "' not found");
         }
@@ -35,7 +49,7 @@ public class UserAuthorityServiceImpl implements UserAuthorityService {
         var authorityName = userAuthority.getName();
         if (userAuthorityRepository.existsByUserIdAndName(userId, authorityName.name())) {
             throw new EntityExistsException(
-                    "Existing role '" + authorityName.toString() + "' for user with id '" + userId + "'"
+                    "Existing role '" + authorityName + "' for user with id '" + userId + "'"
             );
         }
 

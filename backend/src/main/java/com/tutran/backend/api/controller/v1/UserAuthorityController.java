@@ -30,4 +30,14 @@ public class UserAuthorityController extends AbstractV1Controller {
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
+    @PostMapping("/user-authorities/default")
+    public ResponseEntity<ApiResponse<UserAuthorityDefaultResponse>> createDefaultUserAuthority(
+            @RequestParam(name = "user_id") long userId
+    ) {
+        ApiResponse<UserAuthorityDefaultResponse> response = new ApiResponse<>(
+                userAuthorityService.createDefaultUserAuthority(userId)
+        );
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
+    }
+
 }

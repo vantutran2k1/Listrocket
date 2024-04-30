@@ -7,4 +7,6 @@ public interface UserAuthorityService {
 
     UserAuthorityDefaultResponse createUserAuthority(long userId, UserAuthorityCreateRequest request);
 
+    UserAuthorityDefaultResponse createDefaultUserAuthority(long userId);
+
 }
