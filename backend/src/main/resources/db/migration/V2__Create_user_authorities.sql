@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS user_authorities
+(
+    id         SERIAL PRIMARY KEY,
+    name       VARCHAR(255) NOT NULL CHECK (name IN ('ROLE_ADMIN', 'ROLE_USER')),
+    user_id    INT          NOT NULL REFERENCES users (id) ON DELETE CASCADE,
+    created_at TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    is_deleted BOOLEAN      NOT NULL DEFAULT FALSE
+)
